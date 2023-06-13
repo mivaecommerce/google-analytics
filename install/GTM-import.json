@@ -1,0 +1,767 @@
+{
+	"mivaDataLayerVersion": "1.0.0",
+	"exportFormatVersion": 2,
+	"exportTime": "2023-06-05 16:10:08",
+	"containerVersion": {
+		"path": "accounts/0000000000/containers/0000000000/versions/0",
+		"accountId": "0000000000",
+		"containerId": "0000000000",
+		"containerVersionId": "0",
+		"container": {
+			"path": "accounts/0000000000/containers/0000000000",
+			"accountId": "0000000000",
+			"containerId": "0000000000",
+			"name": "Shadows GA4 & GTM Import",
+			"publicId": "GTM-XXXXXXX",
+			"usageContext": [
+				"WEB"
+			],
+			"fingerprint": "0000000000000",
+			"tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/0000000000/containers/0000000000/workspaces?apiLink=container",
+			"features": {
+				"supportUserPermissions": true,
+				"supportEnvironments": true,
+				"supportWorkspaces": true,
+				"supportGtagConfigs": false,
+				"supportBuiltInVariables": true,
+				"supportClients": false,
+				"supportFolders": true,
+				"supportTags": true,
+				"supportTemplates": true,
+				"supportTriggers": true,
+				"supportVariables": true,
+				"supportVersions": true,
+				"supportZones": true
+			},
+			"tagIds": [
+				"GTM-XXXXXXX"
+			]
+		},
+		"tag": [
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"tagId": "3",
+				"name": "GA4 - Tag - GA4 Configuration",
+				"type": "gaawc",
+				"parameter": [
+					{
+						"type": "LIST",
+						"key": "fieldsToSet",
+						"list": [
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "page_location"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Canonical URL}}"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "cookieFlags"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "samesite=none;secure"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "page_code"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Page Code}}"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "screen"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Global - Screen}}"
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "LIST",
+						"key": "userProperties",
+						"list": [
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "basket_id"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Basket Id}}"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "user_id"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Customer Id}}"
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "sendPageView",
+						"value": "true"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "enableSendToServerContainer",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "measurementId",
+						"value": "{{GA4 - Variable - Measurement ID}}"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"firingTriggerId": [
+					"32"
+				],
+				"parentFolderId": "25",
+				"tagFiringOption": "ONCE_PER_EVENT",
+				"monitoringMetadata": {
+					"type": "MAP"
+				},
+				"consentSettings": {
+					"consentStatus": "NOT_SET"
+				}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"tagId": "5",
+				"name": "GA4 - Tag - Track Event",
+				"type": "gaawe",
+				"parameter": [
+					{
+						"type": "BOOLEAN",
+						"key": "sendEcommerceData",
+						"value": "true"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "getEcommerceDataFrom",
+						"value": "dataLayer"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "eventName",
+						"value": "{{Event}}"
+					},
+					{
+						"type": "LIST",
+						"key": "eventParameters",
+						"list": [
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "search_term"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Search Term}}"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "method"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Method}}"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "page_code"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Page Code}}"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "name",
+										"value": "screen"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "{{Miva - Data Layer - Global - Screen}}"
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "TAG_REFERENCE",
+						"key": "measurementId",
+						"value": "GA4 - Tag - GA4 Configuration"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"firingTriggerId": [
+					"16"
+				],
+				"parentFolderId": "25",
+				"tagFiringOption": "ONCE_PER_EVENT",
+				"monitoringMetadata": {
+					"type": "MAP"
+				},
+				"consentSettings": {
+					"consentStatus": "NOT_SET"
+				}
+			}
+		],
+		"trigger": [
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"triggerId": "16",
+				"name": "GA4 - Events",
+				"type": "CUSTOM_EVENT",
+				"customEventFilter": [
+					{
+						"type": "MATCH_REGEX",
+						"parameter": [
+							{
+								"type": "TEMPLATE",
+								"key": "arg0",
+								"value": "{{_event}}"
+							},
+							{
+								"type": "TEMPLATE",
+								"key": "arg1",
+								"value": "(add_payment_info|add_shipping_info|add_to_cart|add_to_wishlist|begin_checkout|generate_lead|login|purchase|remove_from_cart|search|select_item|select_promotion|sign_up|view_cart|view_item|view_item_list|view_promotion)"
+							}
+						]
+					}
+				],
+				"filter": [
+					{
+						"type": "EQUALS",
+						"parameter": [
+							{
+								"type": "TEMPLATE",
+								"key": "arg0",
+								"value": "{{Miva - Data Layer - Global - Module Function}}"
+							},
+							{
+								"type": "TEMPLATE",
+								"key": "arg1",
+								"value": "TokenList_ViewAll_Page"
+							},
+							{
+								"type": "BOOLEAN",
+								"key": "negate",
+								"value": "true"
+							}
+						]
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "25"
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"triggerId": "32",
+				"name": "Miva - Trigger - Page View - DOM Ready (Exclude Admin)",
+				"type": "DOM_READY",
+				"filter": [
+					{
+						"type": "EQUALS",
+						"parameter": [
+							{
+								"type": "TEMPLATE",
+								"key": "arg0",
+								"value": "{{Miva - Data Layer - Global - Function}}"
+							},
+							{
+								"type": "TEMPLATE",
+								"key": "arg1",
+								"value": "PageBuilderPage_Preview"
+							},
+							{
+								"type": "BOOLEAN",
+								"key": "negate",
+								"value": "true"
+							}
+						]
+					},
+					{
+						"type": "EQUALS",
+						"parameter": [
+							{
+								"type": "TEMPLATE",
+								"key": "arg0",
+								"value": "{{Miva - Data Layer - Global - Module Function}}"
+							},
+							{
+								"type": "TEMPLATE",
+								"key": "arg1",
+								"value": "TokenList_ViewAll_Page"
+							},
+							{
+								"type": "BOOLEAN",
+								"key": "negate",
+								"value": "true"
+							}
+						]
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33"
+			}
+		],
+		"variable": [
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "26",
+				"name": "Miva - Data Layer - Canonical URL",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "true"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "defaultValue",
+						"value": "{{Page URL}}"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "canonicalUrl"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "28",
+				"name": "Miva - Data Layer - Basket Id",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "global.basket.basketId"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "29",
+				"name": "Miva - Data Layer - Customer Id",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "global.basket.custId"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "31",
+				"name": "Miva - Data Layer - Global - Function",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "global.function"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "34",
+				"name": "Miva - Data Layer - Global - Module Function",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "global.moduleFunction"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "36",
+				"name": "GA4 - Variable - Measurement ID",
+				"type": "smm",
+				"parameter": [
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "true"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "input",
+						"value": "{{Page Hostname}}"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "defaultValue",
+						"value": "G-XXXXXXXXXX"
+					},
+					{
+						"type": "LIST",
+						"key": "map",
+						"list": [
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "key",
+										"value": "www.example.com"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "G-XXXXXXXXXX"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "key",
+										"value": "staging.example.com"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "G-YYYYYYYYYY"
+									}
+								]
+							},
+							{
+								"type": "MAP",
+								"map": [
+									{
+										"type": "TEMPLATE",
+										"key": "key",
+										"value": "dev.example.com"
+									},
+									{
+										"type": "TEMPLATE",
+										"key": "value",
+										"value": "G-ZZZZZZZZZZ"
+									}
+								]
+							}
+						]
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "25",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "38",
+				"name": "Miva - Data Layer - Search Term",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "search_term"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "40",
+				"name": "Miva - Data Layer - Method",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "method"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "41",
+				"name": "Miva - Data Layer - Page Code",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "page.code"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"variableId": "42",
+				"name": "Miva - Data Layer - Global - Screen",
+				"type": "v",
+				"parameter": [
+					{
+						"type": "INTEGER",
+						"key": "dataLayerVersion",
+						"value": "2"
+					},
+					{
+						"type": "BOOLEAN",
+						"key": "setDefaultValue",
+						"value": "false"
+					},
+					{
+						"type": "TEMPLATE",
+						"key": "name",
+						"value": "global.screen"
+					}
+				],
+				"fingerprint": "0000000000000",
+				"parentFolderId": "33",
+				"formatValue": {}
+			}
+		],
+		"folder": [
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"folderId": "25",
+				"name": "Google Analytics 4",
+				"fingerprint": "0000000000000"
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"folderId": "33",
+				"name": "Miva",
+				"fingerprint": "0000000000000"
+			}
+		],
+		"builtInVariable": [
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"type": "PAGE_URL",
+				"name": "Page URL"
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"type": "PAGE_HOSTNAME",
+				"name": "Page Hostname"
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"type": "PAGE_PATH",
+				"name": "Page Path"
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"type": "REFERRER",
+				"name": "Referrer"
+			},
+			{
+				"accountId": "0000000000",
+				"containerId": "0000000000",
+				"type": "EVENT",
+				"name": "Event"
+			}
+		],
+		"fingerprint": "0000000000000",
+		"tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/0000000000/containers/0000000000/versions/0?apiLink=version"
+	}
+}
