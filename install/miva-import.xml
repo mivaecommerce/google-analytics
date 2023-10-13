@@ -67,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</Attributes>
 	<Template><![CDATA[<mvt:comment>
 Miva Data Layer for Google Analytics 4
-Version: 1.0.0
+Version: 1.0.1
 </mvt:comment>
 
 var dataLayer = dataLayer || [];
@@ -79,10 +79,11 @@ var dataLayer = dataLayer || [];
 |	Determine Canonical URI & URL
 |
 </mvt:comment>
+<mvt:assign name="l.flags:nosession" value="1" />
 <mvt:if expr="g.Screen EQ 'PROD'">
-	<mvt:assign name="l.settings:data_layer:canonical_url" value="l.settings:product:link" />
+	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Product_URL( l.settings:product, l.flags )" />
 <mvt:elseif expr="g.Screen EQ 'CTGY'">
-	<mvt:assign name="l.settings:data_layer:canonical_url" value="l.settings:category:link" />
+	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Category_URL( l.settings:category, l.flags )" />
 <mvt:elseif expr="l.settings:page:code EQ 'SRCH'">
 	<mvt:assign name="l.flags:sep" value="1" />
 	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.flags )" />
@@ -91,7 +92,7 @@ var dataLayer = dataLayer || [];
 	<mvt:do file="g.Module_Feature_URI_DB" name="l.null" value="URISettings_Load_Cached( l.urisettings )" />
 	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="URL_Build_URI( l.urisettings, l.flags, s.request_uri, '' )" />
 <mvt:else>
-	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.null )" />
+	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.flags )" />
 </mvt:if>
 <mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_uri" value="URL_To_URI( l.settings:data_layer:canonical_url )" />
 
@@ -110,8 +111,10 @@ dataLayer.push({
 	global: {
 		action: '&mvtj:global:Action;',
 		basket: {
-			basketId: '&mvtj:global:Basket:basket_id;',
-			custId: '&mvtj:global:Basket:cust_id;'
+			<mvt:if expr="g.Basket:cust_id GT 0">
+				custId: '&mvtj:global:Basket:cust_id;',
+			</mvt:if>
+			basketId: '&mvtj:global:Basket:basket_id;'
 		},
 		categoryCode: '&mvtj:global:Category_Code;',
 		function: '&mvtj:global:Function;',
@@ -192,6 +195,19 @@ window.addEventListener('DOMContentLoaded', () => {
 		input.addEventListener('input', debouncedSearch)
 	});
 });
+
+<mvt:comment>
+|
+|	Track View Search Results
+|   https://support.google.com/analytics/answer/9216061?sjid=11223540072804449153-NA
+|
+</mvt:comment>
+<mvt:if expr="s.request_method NE 'GET' AND l.settings:page:code EQ 'SRCH' AND NOT ISNULL g.Search">
+	dataLayer.push({
+		event: 'view_search_results',
+		search_term: '&mvtj:global:Search;'
+	});
+</mvt:if>
 
 <mvt:comment>
 |
@@ -713,7 +729,7 @@ new MMXPromotionTracker();
 <mvt:assign name="l.data_layer_item" value="''" />
 
 <mvt:comment>Determine sign_up method from g.Action</mvt:comment>
-<mvt:if expr="'ICST' IN g.Action AND NOT g.UI_Exception">
+<mvt:if expr="('ICST' IN g.Action AND NOT g.UI_Exception) OR g.registration EQ 1">
 	dataLayer.push({
 		event: 'sign_up',
 		method: 'Create Customer from &mvtj:event_context;'
@@ -732,7 +748,7 @@ new MMXPromotionTracker();
 |
 </mvt:comment>
 
-<mvt:if expr="'LOGN' IN g.Action AND NOT g.UI_Exception">
+<mvt:if expr="('LOGN' IN g.Action AND NOT g.UI_Exception) OR g.logon EQ 1">
 	dataLayer.push({
 		event: 'login',
 		method: 'Login through &mvtj:event_context;'
