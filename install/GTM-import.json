@@ -1,7 +1,7 @@
 {
-	"mivaDataLayerVersion": "1.1.0",
+	"mivaDataLayerVersion": "1.2.0",
 	"exportFormatVersion": 2,
-	"exportTime": "2023-06-05 16:10:08",
+	"exportTime": "2024-08-16 12:00:00",
 	"containerVersion": {
 		"path": "accounts/0000000000/containers/0000000000/versions/0",
 		"accountId": "0000000000",
